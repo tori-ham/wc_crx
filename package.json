@@ -9,7 +9,6 @@
     "crypto"
   ],
   "author": "WalletConnect, Inc. <walletconnect.com>",
-  "homepage": "https://walletconnect.org",
   "license": "MIT",
   "scripts": {
     "start": "react-scripts-ts start",
