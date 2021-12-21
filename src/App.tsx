@@ -538,7 +538,7 @@ class App extends React.Component<any, any> {
               <SLanding center>
                 <h3>
                   {/*<WalletLogo />*/}
-                  <img src={require('./assets/wallet.svg')} style={{ width: "100%", height: "100%" }} />
+                  <img src={require('./assets/wallet.svg')} style={{ width: "75%", height: "75%" }} />
                   <br />
                   {/*<span>{`v${process.env.REACT_APP_VERSION}`}</span>*/}
                 </h3>
