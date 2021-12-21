@@ -8,7 +8,7 @@ import {fonts} from "../styles";
 const DisplayButton = styled(Button as any)`
   border-radius: 8px;
   font-size: ${fonts.size.medium};
-  height: 30px;
+  height: 40px;
   width: 20%;
   margin: 12px 0;
 `;
