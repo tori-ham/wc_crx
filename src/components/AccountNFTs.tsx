@@ -1,5 +1,27 @@
 import * as React from "react";
 import Column from "./Column";
+
+import Button from "../components/Button";
+import styled from "styled-components";
+import {fonts} from "../styles";
+
+const DisplayButton = styled(Button as any)`
+  border-radius: 8px;
+  font-size: ${fonts.size.medium};
+  height: 30px;
+  width: 20%;
+  margin: 12px 0;
+`;
+
+const DisplayGrid = styled.div`
+    display: table; 
+    width:100%;
+`;
+const DisplayCell = styled.div`
+    display: table-cell; 
+    vertical-align: middle;
+`;
+
 // import AssetRow from "./AssetRow";
 // import { IAssetData } from "../helpers/types";
 // import {apiNFTMetadata} from "../helpers/api";
@@ -30,12 +52,16 @@ const AccountNFTs = (props: any) => {
 
     return (
         <Column center>
-            <div>
+            <div >
                 {nft_uri_list.map((imgSrc: any, index: any) => (
-                    <div>
-                    <img src={imgSrc} key={index} style={{ width: "50%", height: "50%" }}/>
-                    <button id="display-button" type="button" >Display</button>
-                    </div>
+                    // <div display={"table"} width={"100%"}>
+                    //     <div className="int-box">
+                    <DisplayGrid>
+                        <DisplayCell>
+                            <p><img src={imgSrc} key={index} style={{ width: "50%", height: "50%" }}/></p>
+                            <DisplayButton id="display-button" type="button" >Display</DisplayButton>
+                        </DisplayCell>
+                    </DisplayGrid>
                     )
                 )}
             </div>
