@@ -10,7 +10,10 @@ import Wrapper from "./components/Wrapper";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Loader from "./components/Loader";
+// import WalletLogo from "./components/WalletLogo";
+
 import { fonts } from "./styles";
+// import wallet_logo from "./assets/walletconnect.png";
 import {
   apiGetAccountAssets,
   apiGetGasPrices,
@@ -216,11 +219,12 @@ class App extends React.Component<any, any> {
       }
 
       this.onConnect(payload);
+      console.log(this.state.accounts)
     });
 
     connector.on("disconnect", (error, payload) => {
       console.log(`connector.on("disconnect")`);
-
+      console.log(this.state.accounts)
       if (error) {
         throw error;
       }
@@ -270,7 +274,10 @@ class App extends React.Component<any, any> {
   };
 
   public onDisconnect = async () => {
+    // console.log(this.state.accounts)
     this.resetApp();
+    // console.log(this.state.nft_uri_list)
+    // console.log(this.state.accounts)
   };
 
   public onSessionUpdate = async (accounts: string[], chainId: number) => {
@@ -524,13 +531,16 @@ class App extends React.Component<any, any> {
             chainId={chainId}
             killSession={this.killSession}
           />
+
           <SContent>
+
             {!address && !assets.length ? (
               <SLanding center>
                 <h3>
-                  {`Try out WalletConnect`}
+                  {/*<WalletLogo />*/}
+                  <img src={require('./assets/wallet.svg')} style={{ width: "100%", height: "100%" }} />
                   <br />
-                  <span>{`v${process.env.REACT_APP_VERSION}`}</span>
+                  {/*<span>{`v${process.env.REACT_APP_VERSION}`}</span>*/}
                 </h3>
                 <SButtonContainer>
                   <SConnectButton left onClick={this.connect} fetching={fetching}>

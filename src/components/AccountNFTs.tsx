@@ -6,6 +6,7 @@ import Column from "./Column";
 
 const AccountNFTs = (props: any) => {
     const {nft_uri_list} = props;
+    console.log(nft_uri_list)
     // let allowed_contracts = new Set<string>(['0x0beed7099af7514ccedf642cfea435731176fb02']);
     // // let allowed_contracts_id_map = new Map<string, string>();
     // let nft_id_list: string[] = [];
