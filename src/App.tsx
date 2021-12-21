@@ -219,12 +219,10 @@ class App extends React.Component<any, any> {
       }
 
       this.onConnect(payload);
-      console.log(this.state.accounts)
     });
 
     connector.on("disconnect", (error, payload) => {
       console.log(`connector.on("disconnect")`);
-      console.log(this.state.accounts)
       if (error) {
         throw error;
       }
@@ -274,10 +272,7 @@ class App extends React.Component<any, any> {
   };
 
   public onDisconnect = async () => {
-    // console.log(this.state.accounts)
     this.resetApp();
-    // console.log(this.state.nft_uri_list)
-    // console.log(this.state.accounts)
   };
 
   public onSessionUpdate = async (accounts: string[], chainId: number) => {
@@ -317,22 +312,21 @@ class App extends React.Component<any, any> {
   };
 
   public getNFTMetadata = async () => {
-    const {NFTs} = this.state
-
-    this.setState({ fetching: true });
-    const uri_list: string[] = this.state.nft_uri_list;
-    const allowed_contracts = new Set<string>(['0x85d39cea74b0baba54d7fd0df42dd3e6e39b1625']);
-    for (const curr_nft of NFTs.ownedNfts) {
-      // console.log(curr_nft.contract.address)
-      if (allowed_contracts.has(curr_nft.contract.address)) {
-        console.log("here")
-        // allowed_contracts_id_map.set(curr_nft.contract.address, curr_nft.id.tokenId)
-        const metadata = await apiNFTMetadata(curr_nft.contract.address, curr_nft.id.tokenId)
-        uri_list.push(metadata.media.uri)
-      }
-    }
-    console.log(uri_list)
-    await this.setState({ fetching: false, nft_uri_list: uri_list });
+    // const {NFTs} = this.state
+    // this.setState({ fetching: true });
+    // const nft_uri_list:string[] = [];
+    // const allowed_contracts = new Set<string>(['0x85d39cea74b0baba54d7fd0df42dd3e6e39b1625']);
+    // for (const curr_nft of NFTs.ownedNfts) {
+    //   if (allowed_contracts.has(curr_nft.contract.address)) {
+    //     // allowed_contracts_id_map.set(curr_nft.contract.address, curr_nft.id.tokenId)
+    //     const metadata = await apiNFTMetadata(curr_nft.contract.address, curr_nft.id.tokenId)
+    //     nft_uri_list.push(metadata.media.uri)
+    //   }
+    // }
+    const nft_uri_list:string[] = [
+      'https://www.themekaverse.com/images/mattey.jpg'
+    ];
+    await this.setState({ fetching: false, nft_uri_list });
   };
 
 
@@ -509,6 +503,7 @@ class App extends React.Component<any, any> {
     }
   };
 
+
   public render = () => {
     const {
       assets,
@@ -565,32 +560,32 @@ class App extends React.Component<any, any> {
                   )}
                 </Column>
 
-                <h3>Actions</h3>
-                <Column center>
-                  <STestButtonContainer>
-                    <STestButton left onClick={this.testSendTransaction}>
-                      {"eth_sendTransaction"}
-                    </STestButton>
-
-                    <STestButton left onClick={this.testSignMessage}>
-                      {"eth_sign"}
-                    </STestButton>
-
-                    <STestButton left onClick={this.testSignTypedData}>
-                      {"eth_signTypedData"}
-                    </STestButton>
-                  </STestButtonContainer>
-                </Column>
-                <h3>Balances</h3>
-                {!fetching ? (
-                  <AccountAssets chainId={chainId} assets={assets} />
-                ) : (
-                  <Column center>
-                    <SContainer>
-                      <Loader />
-                    </SContainer>
-                  </Column>
-                )}
+                {/*<h3>Actions</h3>*/}
+                {/*<Column center>*/}
+                {/*  <STestButtonContainer>*/}
+                {/*    <STestButton left onClick={this.testSendTransaction}>*/}
+                {/*      {"eth_sendTransaction"}*/}
+                {/*    </STestButton>*/}
+                
+                {/*    <STestButton left onClick={this.testSignMessage}>*/}
+                {/*      {"eth_sign"}*/}
+                {/*    </STestButton>*/}
+                
+                {/*    <STestButton left onClick={this.testSignTypedData}>*/}
+                {/*      {"eth_signTypedData"}*/}
+                {/*    </STestButton>*/}
+                {/*  </STestButtonContainer>*/}
+                {/*</Column>*/}
+                {/*<h3>Balances</h3>*/}
+                {/*{!fetching ? (*/}
+                {/*  <AccountAssets chainId={chainId} assets={assets} />*/}
+                {/*) : (*/}
+                {/*  <Column center>*/}
+                {/*    <SContainer>*/}
+                {/*      <Loader />*/}
+                {/*    </SContainer>*/}
+                {/*  </Column>*/}
+                {/*)}*/}
               </SBalances>
             )}
           </SContent>

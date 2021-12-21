@@ -4,6 +4,12 @@ import Column from "./Column";
 // import { IAssetData } from "../helpers/types";
 // import {apiNFTMetadata} from "../helpers/api";
 
+
+// const toggleModal = () => {
+//     window.webkit.messageHandlers.log.postMessage("submit");
+// }
+
+
 const AccountNFTs = (props: any) => {
     const {nft_uri_list} = props;
     console.log(nft_uri_list)
@@ -20,10 +26,18 @@ const AccountNFTs = (props: any) => {
     //     }
     // }
 
+
+
     return (
         <Column center>
             <div>
-                {nft_uri_list.map((imgSrc: any, index: any) => (<img src={imgSrc} key={index}/>))}
+                {nft_uri_list.map((imgSrc: any, index: any) => (
+                    <div>
+                    <img src={imgSrc} key={index} style={{ width: "50%", height: "50%" }}/>
+                    <button id="display-button" type="button" >Display</button>
+                    </div>
+                    )
+                )}
             </div>
         </Column>
     );
