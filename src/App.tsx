@@ -538,7 +538,7 @@ class App extends React.Component<any, any> {
                   {/*<span>{`v${process.env.REACT_APP_VERSION}`}</span>*/}
                 </h3>
                 <SButtonContainer>
-                  <SConnectButton left onClick={this.connect} fetching={fetching}>
+                  <SConnectButton left onClick={this.connect} fetching={fetching} id={"connect-button"}>
                     {"Connect to WalletConnect"}
                   </SConnectButton>
                 </SButtonContainer>
